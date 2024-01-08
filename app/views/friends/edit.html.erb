@@ -1,6 +1,17 @@
 <% @page_title = "友達情報の編集" %>
 <h1><%= @page_title %></h1>
 
+<% if @friend.errors.present? %>
+    <div id = "errors">
+        <h3>エラーがあります。</h3>
+        <ul>
+            <% @friend.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
 <%= form_for @friend do |form| %>
     <%= form.label :name, "名前" %>
     <%= form.text_field :name %>

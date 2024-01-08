@@ -1,4 +1,7 @@
 class Friend < ApplicationRecord
+    validates :name, presence: true, length: { maximum: 10, allow_blank: true }
+
+
     class << self
         def search(query)
             rel = order("name")
