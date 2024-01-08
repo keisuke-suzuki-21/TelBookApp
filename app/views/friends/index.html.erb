@@ -1,13 +1,18 @@
 <% @page_title = "友達一覧" %>
 <h1><%= @page_title %></h1>
 
+<%= form_tag :search_friends, method: :get, class: "search" do %>
+    <%= text_field_tag "q", params[:q] %>
+    <%=  submit_tag "検索" %>
+<% end %>
+
 <%= link_to "add", new_friend_path %>
 
 <% if @friends.present? %>
  <% @friends.each do |friend| %>
   <p>・<%= link_to friend.name, friend %></p>
   <%= link_to "edit", edit_friend_path(friend)%>
-  <%= link_to "delete", friend_path(friend), method: :delete%>
+  <%= link_to "delete", friend_path(friend), method: :delete, data: {confirm: "本当に削除しますか?" }%>
  <% end %>
 <% else %>
  <p>登録されている友達がいません。</p>
