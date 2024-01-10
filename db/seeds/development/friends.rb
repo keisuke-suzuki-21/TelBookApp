@@ -2,6 +2,8 @@ names = ["鈴木啓介", "藤野大気", "渡部日奈子", "水野雪香", "土
 
 0.upto(6) do |idx|
     Friend.create(
-        name: names[idx]
+        name: names[idx],
+        password: "telbook!",
+        password_confirmation: "telbook!"
     )
 end

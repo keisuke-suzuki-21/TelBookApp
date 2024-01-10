@@ -1,4 +1,6 @@
 class Friend < ApplicationRecord
+    has_secure_password
+    
     validates :name, presence: true, length: { maximum: 10, allow_blank: true }
 
 

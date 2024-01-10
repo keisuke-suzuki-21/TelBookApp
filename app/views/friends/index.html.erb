@@ -1,6 +1,22 @@
 <% @page_title = "友達一覧" %>
 <h1><%= @page_title %></h1>
 
+
+<% if current_friend %>
+    <%= current_friend.name + "さん、こんにちは！"%>
+    <%= link_to "ログアウト", :session, method: :delete, data: {confirm: "ログアウトしますか？"} %>
+<% else %>
+    <h2>ログイン</h2>
+    <% if flash.alert %><p><%= flash.alert %></p><% end %>
+    <%= form_tag :session, id: "login_form" do %>
+        <label>ユーザー名：</label>
+        <input type="text" name="name">
+        <label>パスワード：</label>
+        <input type="password" name="password">
+        <input type="submit" value="ログイン">
+    <% end %>
+<% end %>
+
 <%= form_tag :search_friends, method: :get, class: "search" do %>
     <%= text_field_tag "q", params[:q] %>
     <%=  submit_tag "検索" %>
