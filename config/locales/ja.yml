@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      friend: 友達情報
+    attributes:
+      friend: 
+        name: 名前
